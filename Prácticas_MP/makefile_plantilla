@@ -1,0 +1,149 @@
+###########################################################################
+#
+#       METODOLOGÍA DE LA PROGRAMACIÓN
+#
+#		Autor: Juan Manuel Segura Duarte
+#
+#		Proyecto: nombre_proyecto
+#
+#		Fichero: makefile_plantilla
+#
+###########################################################################
+
+#··········································································
+# Macros
+
+
+HOME = .
+
+BIN = $(HOME)/bin
+INCLUDE = $(HOME)/include
+LIB = $(HOME)/lib
+OBJ = $(HOME)/obj
+SRC = $(HOME)/src
+
+
+RELACION_EJERCICIOS = "RELACION_PROBLEMAS_NUMERO"
+
+PROYECTO = "Ejercicios x, y, z, t"
+
+
+#··········································································
+
+all:	preambulo \
+		clean-objs \
+		clean-bins \
+		$(BIN)/nombre_ejecutable \
+		despedida
+
+#··········································································
+
+preambulo:
+	@echo
+	@echo ---------------------------------------------------------
+	@echo
+	@echo "   METODOLOGÍA DE LA PROGRAMACIÓN"
+	@echo
+	@echo "   Autor: Juan Manuel Segura Duarte"
+	@echo
+	@echo "   $(RELACION_EJERCICIOS)"
+	@echo "   Proyecto: $(PROYECTO)"
+	@echo
+	@echo ---------------------------------------------------------
+	@echo
+	@echo
+	@echo Creando ejecutables ...
+	@echo
+	@echo
+
+despedida:
+	@echo
+	@echo ... ejecutables creados
+	@echo
+
+#··········································································
+# EJECUTABLES
+
+
+$(BIN)/nombre_ejecutable : $(OBJ)/nombre_objeto \
+						   $(LIB)/libnombre_biblioteca.a
+	@echo
+	@echo Creando ejecutable nombre_ejecutable
+	@echo
+	g++ -o $(BIN)/nombre_ejecutable \
+		   $(OBJ)/nombre_objeto -L$(LIB) -lnombre_biblioteca
+
+
+#··········································································
+# OBJETOS
+
+
+$(OBJ)/nombre_objeto : $(SRC)/nombre_cpp
+	@echo
+	@echo Creando objeto nombre_objeto
+	@echo
+	g++ -c -o $(OBJ)/nombre_objeto \
+			  $(SRC)/nombre_cpp -I$(INCLUDE) -std=c++14
+
+
+#··········································································
+# BIBLIOTECAS
+
+
+$(LIB)/libnombre_biblioteca.a : $(OBJ)/objeto_biblioteca.o
+	@echo
+	@echo Creando biblioteca libnombre_biblioteca.a
+	@echo
+	ar rvs $(LIB)/libnombre_biblioteca.a \
+		   $(OBJ)/objeto_biblioteca.o
+
+# Objetos para crear las bibliotecas
+
+$(OBJ)/objeto_biblioteca.o : $(SRC)/objeto_biblioteca.cpp
+	@echo
+	@echo Creando objeto objeto_biblioteca.o
+	@echo
+	g++ -c -o $(OBJ)/objeto_biblioteca.o \
+			  $(SRC)/objeto_biblioteca.cpp -I$(INCLUDE) -std=c++14
+
+
+#··········································································
+# LIMPIEZA
+
+clean : clean-objs
+
+clean-objs:
+	@echo
+	@echo Borrando objetos ...
+	@echo
+	
+	-rm $(OBJ)/nombre_objeto
+	-rm $(OBJ)/objeto_biblioteca.o
+	
+	@echo
+	@echo ... objetos borrados
+	@echo
+
+clean-bins:
+	@echo
+	@echo Borrando ejecutables ...
+	@echo
+	
+	-rm $(BIN)/nombre_ejecutable
+	
+	@echo
+	@echo ... ejecutables borrados
+	@echo
+
+clean-libs:
+	@echo
+	@echo Borrando bibliotecas ...
+	@echo
+	
+	-rm $(LIB)/libnombre_biblioteca.a
+	
+	@echo
+	@echo ... bibliotecas borrados
+	@echo
+
+mr.proper : clean-objs clean-bins clean-libs

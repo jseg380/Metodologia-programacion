@@ -1,0 +1,70 @@
+33333333C
+Jose Luis
+Lopez Perez
+6.5
+7
+5.2
+6
+77777777G
+Maria Luisa
+Ruiz Marcos
+4
+5.5
+8.5
+9.6
+99999999I
+Francisco
+Valero Matas
+1
+1.5
+2.4
+3.6
+22222222B
+Maria
+Navarro Murtas
+0
+0
+7.5
+2.5
+55555555E
+Leocadia
+Navascues Ruiperez
+1
+4
+7
+9
+11111111A
+Leonor
+Burgos Falces
+6
+7.5
+8.6
+5.9
+44444444D
+James
+Rockting
+9
+7
+5.7
+6.8
+88888888H
+Felipe
+Martin Martin
+7
+8
+4.9
+3.7
+66666666F
+Sandra
+Escobedo Velasco
+8
+9
+7
+5
+00000000A
+Josefa
+Bellver Jurado
+10
+10
+10
+10
